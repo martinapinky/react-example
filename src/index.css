@@ -165,7 +165,7 @@ input {
 }
 
 input:invalid {
-  border: 1px solid #bbb;
+  border: 1pxsolid #bbb;
 }
 
 input:valid {

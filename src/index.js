@@ -4,18 +4,30 @@ import './index.css';
 import Tabs from './components/Tabs'
 
 // h3 
-const H3 = (props) => {
-  return <h3>{props.text}</h3>
+class H3 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <h3>{this.props.text}</h3>
+  }
 }
 
 // button
-const Button = (props) => {
-  const { type, text, onClick } = props
-  let btnClassName = 'btn-primary'
-  if (type) {
-    btnClassName = `btn-${type}`
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
   }
-  return <button onClick={onClick} className={btnClassName}>{text}</button>
+
+  render() {
+    const { type, text, onClick } = this.props
+    let btnClassName = 'btn-primary'
+    if (type) {
+      btnClassName = `btn-${type}`
+    }
+    return <button onClick={onClick} className={btnClassName}>{text}</button>
+  }
 }
 
 Button.defaultProps = {
@@ -23,48 +35,79 @@ Button.defaultProps = {
 }
 
 // input
-const Input = (props) => {
-  const { onChange, type, value } = props
-  return <input onChange={onChange} type={type} value={value} required />
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { onChange, type, value } = this.props
+    return <input onChange={onChange} type={type} value={value} required />
+  }
+
 }
 
 // toggle switch
-const Switch = () => {
-  return <label className="theme-switch">
-    <input type="checkbox" />
-    <div className="slider round"></div>
-  </label>
+class Switch extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <label className="theme-switch">
+      <input type="checkbox" />
+      <div className="slider round"></div>
+    </label>
+  }
 }
 
 // option tag
-const Option = (props) => {
-  const { value, text } = props
-  return <option value={value}>{text}</option>
+class Option extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { value, text } = this.props
+    return <option value={value}>{text}</option>
+  }
 }
 
 // select
-const Select = (props) => {
-  const { options } = props
-  // Loop through array of options and return an 'Option' component for each one
-  const renderOptions = () => {
-    return options.map(element => <Option value={element.value} text={element.text} key={element.value} />)
+class Select extends React.Component {
+  constructor(props) {
+    super(props);
   }
-  return <select>
-    <Option text="Please choose an option" />
-    {renderOptions()}
-  </select>
+
+  render() {
+    const { options } = this.props
+    // Loop through array of options and return an 'Option' component for each one
+    const renderOptions = () => {
+      return options.map(element => <Option value={element.value} text={element.text} key={element.value} />)
+    }
+    return <select>
+      <Option text="Please choose an option" />
+      {renderOptions()}
+    </select>
+  }
 }
 
 // card
-const Card = (props) => {
-  const { title, imageUrl, description } = props
-  return <div className="card-container">
-    <img className="card-image" src={imageUrl} alt={title} />
-    <div className="card-body">
-      <H3 text={title} />
-      <p className="card-description">{description}</p>
+class Card extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { title, imageUrl, description } = this.props
+    return <div className="card-container">
+      <img className="card-image" src={imageUrl} alt={title} />
+      <div className="card-body">
+        <H3 text={title} />
+        <p className="card-description">{description}</p>
+      </div>
     </div>
-  </div>
+  }
 }
 
 
